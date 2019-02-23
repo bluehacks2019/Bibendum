@@ -1,18 +1,17 @@
-public class Citizen
-{
+package com.bibendum.bluehacks.bibendum;
+
+public class Citizen {
 	private String[] classNames = {"Spirit", "EmoPsych", "Phys", "Soc", "Occup", "Intel"};
-	private int class;
+	private int classs;
 	private boolean living;
 
-	public Citizen(int c)
-	{
-		class = c;
+	public Citizen(int c) {
+		classs = c;
 		living = true;
 	}
 
-	public String getClass()
-	{
-		return classNames[class];
+	public String getClasss() {
+		return classNames[classs];
 	}
 
 	public boolean getLiving()

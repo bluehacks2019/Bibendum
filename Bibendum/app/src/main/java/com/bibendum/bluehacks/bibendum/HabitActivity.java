@@ -8,11 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Date;
+
+import io.realm.Realm;
+
 public class HabitActivity extends AppCompatActivity {
 
     TextInputEditText habitView;
-    EditText duration, frequency;
+    EditText durationT, frequencyT;
     Button btnMinusD, btnAddD, btnMinusF, btnAddF, addHabitBtn;
+    Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +27,11 @@ public class HabitActivity extends AppCompatActivity {
         setTitle("YAY NEW HABIT!");
 
         habitView = (TextInputEditText) findViewById(R.id.habitText);
-        duration = (EditText) findViewById(R.id.durationText);
-        frequency = (EditText) findViewById(R.id.frequencyText);
+        durationT = (EditText) findViewById(R.id.durationText);
+        frequencyT = (EditText) findViewById(R.id.frequencyText);
 
-        duration.setText("66");
-        frequency.setText("1");
+        durationT.setText("66");
+        frequencyT.setText("1");
 
         btnMinusD=(Button)findViewById(R.id.buttonMinusD);
         btnAddD=(Button)findViewById(R.id.buttonAddD);
@@ -38,33 +43,41 @@ public class HabitActivity extends AppCompatActivity {
         btnMinusD.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                int curr = Integer.parseInt(duration.getText().toString());
-                if(curr >= 67) duration.setText((Integer.parseInt(duration.getText().toString())-1)+"");
+                int curr = Integer.parseInt(durationT.getText().toString());
+                if(curr >= 67) durationT.setText((curr-1)+"");
             }
         });
         btnAddD.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                duration.setText((Integer.parseInt(duration.getText().toString())+1)+"");
+                durationT.setText((Integer.parseInt(durationT.getText().toString())+1)+"");
             }
         });
         btnMinusF.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                int curr = Integer.parseInt(frequency.getText().toString());
-                if(curr >= 1) frequency.setText((Integer.parseInt(frequency.getText().toString())-1)+"");
+                int curr = Integer.parseInt(frequencyT.getText().toString());
+                if(curr >= 1) frequencyT.setText((curr-1)+"");
             }
         });
         btnAddF.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                frequency.setText((Integer.parseInt(frequency.getText().toString())+1)+"");
+                int curr = Integer.parseInt(frequencyT.getText().toString());
+                if( curr < 7 ) frequencyT.setText((Integer.parseInt(frequencyT.getText().toString())+1)+"");
             }
         });
         addHabitBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-
+                String habit = habitView.getText().toString();
+                int duration = Integer.parseInt(durationT.getText().toString());
+                int frequency = Integer.parseInt(frequencyT.getText().toString());
+                Date d = new Date();
+                realm = Realm.getDefaultInstance();
+                Habit newHabit = new Habit(habit,duration,frequency,d);
+                RealmHelper rh = new RealmHelper(realm);
+                rh.saveHabits(newHabit);
             }
         });
 
