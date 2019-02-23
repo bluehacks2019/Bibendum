@@ -19,6 +19,10 @@ public class Stronghold {
         this.nCitizens = nCitizens;
     }
 
+    public void addCitizens(int newCitizens){
+        this.nCitizens += newCitizens;
+    }
+
     public int getNSpirit() {
         return nSpirit;
     }
