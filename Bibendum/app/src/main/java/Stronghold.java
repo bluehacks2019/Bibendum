@@ -11,6 +11,10 @@ public class Stronghold {
         this.strength = strength;
     }
 
+    public void addStrength(int moreStrength){
+        this.strength += moreStrength;
+    }
+
     public int getNCitizens() {
         return nCitizens;
     }
@@ -31,12 +35,20 @@ public class Stronghold {
         this.nSpirit = nSpirit;
     }
 
+    public void addNSpirit(int moreSpirit){
+        this.nSpirit += moreSpirit;
+    }
+
     public int getNEmoPsych() {
         return nEmoPsych;
     }
 
     public void setNEmoPsych(int nEmoPsych) {
         this.nEmoPsych = nEmoPsych;
+    }
+
+    public void addNEmoPsych(int moreEmoPsych){
+        this.nEmoPsych += moreEmoPsych;
     }
 
     public int getNPhys() {
@@ -47,12 +59,20 @@ public class Stronghold {
         this.nPhys = nPhys;
     }
 
+    public void addNPhys(int morePhys){
+        this.nPhys += morePhys;
+    }
+
     public int getNSoc() {
         return nSoc;
     }
 
     public void setNSoc(int nSoc) {
         this.nSoc = nSoc;
+    }
+
+    public void addNSoc(int moreSoc){
+        this.nSoc += moreSoc;
     }
 
     public int getNOccup() {
@@ -63,12 +83,20 @@ public class Stronghold {
         this.nOccup = nOccup;
     }
 
+    public void addNOccup(int moreOccup){
+        this.nOccup += moreOccup;
+    }
+
     public int getNIntell() {
         return nIntell;
     }
 
     public void setNIntell(int nIntell) {
         this.nIntell = nIntell;
+    }
+
+    public void addNIntell(int moreIntell){
+        this.nIntell += moreIntell;
     }
 
     public ArrayList<Item> getItems() {
