@@ -44,6 +44,10 @@ public class StrongholdActivity extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
         //RETRIEVE
         helper = new RealmHelper(realm);
+        helper.removeItem("name", "house");
+        helper.removeItem("name", "hammer");
+        helper.removeItem("name", "saw");
+        helper.removeItem("name", "barbwire");
         prepareItemData();
         items = helper.retrieveItems();
 
