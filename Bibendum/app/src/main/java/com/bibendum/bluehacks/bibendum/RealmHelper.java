@@ -56,5 +56,13 @@ public class RealmHelper {
         return items;
     }
 
+    public void removeItem(String field, String value) {
+
+        RealmResults<Item> results = realm.where(Item.class).equalTo(field, value).findAll();
+
+        realm.beginTransaction();
+        results.deleteAllFromRealm();
+        realm.commitTransaction();
+    }
 
 }
