@@ -33,4 +33,28 @@ public class RealmHelper {
 
         return habitsInfos;
     }
+
+    public void saveItems(final Item item) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+
+                Item i =realm.copyToRealm(item);
+
+            }
+        });
+    }
+
+    public ArrayList<Item> retrieveItems() {
+        ArrayList<Item> items = new ArrayList<>();
+        RealmResults<Item> itemsRealm = realm.where(Item.class).findAll();
+
+        for (Item i : itemsRealm) {
+            items.add(i);
+        }
+
+        return items;
+    }
+
+
 }
