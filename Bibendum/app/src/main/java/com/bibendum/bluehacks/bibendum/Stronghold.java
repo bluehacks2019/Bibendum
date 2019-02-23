@@ -1,3 +1,5 @@
+package com.bibendum.bluehacks.bibendum;
+
 public class Stronghold {
 
     private int strength, nCitizens, nSpirit, nEmoPsych, nPhys, nSoc, nOccup, nIntell;
