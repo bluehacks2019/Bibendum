@@ -1,5 +1,7 @@
 package com.bibendum.bluehacks.bibendum;
 
+import java.util.ArrayList;
+
 public class Stronghold {
 
     private int strength, nCitizens, nSpirit, nEmoPsych, nPhys, nSoc, nOccup, nIntell;
