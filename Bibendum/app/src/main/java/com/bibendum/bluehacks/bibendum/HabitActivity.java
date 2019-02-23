@@ -1,5 +1,6 @@
 package com.bibendum.bluehacks.bibendum;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -78,6 +79,8 @@ public class HabitActivity extends AppCompatActivity {
                 Habit newHabit = new Habit(habit,duration,frequency,d);
                 RealmHelper rh = new RealmHelper(realm);
                 rh.saveHabits(newHabit);
+                Intent ag = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(ag);
             }
         });
 

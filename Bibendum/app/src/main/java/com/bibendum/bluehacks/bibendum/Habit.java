@@ -13,6 +13,10 @@ public class Habit extends RealmObject {
 	private boolean currentStatus;
 	private boolean finalStatus;
 
+	public Habit(){
+
+	}
+
 	public Habit(String n, int d, int f, Date date) {
 		name = n;
 		duration = d;

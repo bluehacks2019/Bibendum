@@ -7,7 +7,6 @@ import io.realm.RealmResults;
 
 public class RealmHelper {
     Realm realm;
-    ArrayList<Habit> habitsInfo;
     public RealmHelper(Realm realm){
         this.realm = realm;
     }
@@ -23,15 +22,15 @@ public class RealmHelper {
         });
     }
 
-    public ArrayList<Habit> retrieve() {
-        ArrayList<Habit> habitDescriptions = new ArrayList<>();
+    public ArrayList<Habit> retrieveHabits() {
+        ArrayList<Habit> habitsInfos = new ArrayList<>();
         RealmResults<Habit> habits = realm.where(Habit.class).findAll();
 
         for (Habit h : habits) {
-            Habit hToAdd = new Habit(h.getName(), h.getDuration(), h.getFrequency(), h.getStartDate());
-            habitsInfo.add(hToAdd);
+            Habit toAdd = new Habit(h.getName(),h.getDuration(),h.getFrequency(),h.getStartDate());
+            habitsInfos.add(h);
         }
 
-        return habitsInfo;
+        return habitsInfos;
     }
 }
