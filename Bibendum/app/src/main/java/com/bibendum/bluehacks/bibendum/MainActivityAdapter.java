@@ -30,10 +30,8 @@ class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapter.MyVie
 
         public MyViewHolder(View view) {
             super(view);
-            text = (TextView) view.findViewById(R.id.text);
-            time = (TextView) view.findViewById(R.id.time);
+            text = (TextView) view.findViewById(R.id.habitText);
             //date = (TextView) view.findViewById(R.id.date);
-            //groupName = (TextView) view.findViewById(R.id.groupName);
         }
     }
 
@@ -50,8 +48,16 @@ class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapter.MyVie
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(c)
-                .inflate(R.layout.main_recview_row_layout, parent, false);
+        View itemView;
+
+        if(viewType == R.layout.main_recview_row_layout){
+            itemView = LayoutInflater.from(c).inflate(R.layout.main_recview_row_layout, parent, false);
+        }
+
+        else {
+            itemView = LayoutInflater.from(c).inflate(R.layout.addhabit_recview_row_layout, parent, false);
+        }
+
 
         return new MyViewHolder(itemView);
     }

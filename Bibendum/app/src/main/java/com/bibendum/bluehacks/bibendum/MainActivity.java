@@ -44,7 +44,12 @@ public class MainActivity extends AppCompatActivity {
         Date date = new Date();
         TextView tv = (TextView) findViewById(R.id.textView3);
         ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar);
-
+        Habit newHabit = new Habit("COOKING",2,3,new Date());
+        helper.saveHabits(newHabit);
+        ArrayList<Habit> habits = helper.retrieveHabits();
+        for(Habit h: habits){
+            tv.setText(h.getName());
+        }
     }
 
     @Override
