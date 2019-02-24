@@ -65,4 +65,13 @@ public class RealmHelper {
         realm.commitTransaction();
     }
 
+    public int retrieveRescPts() {
+        int pts;
+        Stronghold stronghold = realm.where(Stronghold.class).findFirst();
+
+        pts = stronghold.getPtsForResc();
+
+        return pts;
+    }
+
 }
