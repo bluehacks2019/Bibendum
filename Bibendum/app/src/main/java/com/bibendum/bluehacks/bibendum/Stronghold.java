@@ -4,8 +4,28 @@ import java.util.ArrayList;
 
 public class Stronghold {
 
-    private int strength, nCitizens, nSpirit, nEmoPsych, nPhys, nSoc, nOccup, nIntell;
+    private int strength;
+    private int ptsForResc;
+    private int nCitizens;
+    private int nSpirit;
+    private int nEmoPsych;
+    private int nPhys;
+    private int nSoc;
+    private int nOccup;
+    private int nIntell;
     private ArrayList<Item> items = new ArrayList<Item>();
+
+    public int getPtsForResc() {
+        return ptsForResc;
+    }
+
+    public void setPtsForResc(int ptsForResc) {
+        this.ptsForResc = ptsForResc;
+    }
+
+    public void addPtsForResc(int ptsForResc) {
+        this.ptsForResc += ptsForResc;
+    }
 
     public int getStrength() {
         return strength;
