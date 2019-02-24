@@ -34,7 +34,38 @@ public class RealmHelper {
         return habitsInfos;
     }
 
-    public void deleteHabits(){
+    public void saveItems(final Item item) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+
+                Item i =realm.copyToRealm(item);
+
+            }
+        });
+    }
+
+    public ArrayList<Item> retrieveItems() {
+        ArrayList<Item> items = new ArrayList<>();
+        RealmResults<Item> itemsRealm = realm.where(Item.class).findAll();
+
+        for (Item i : itemsRealm) {
+            items.add(i);
+        }
+
+        return items;
+    }
+
+    public void removeItem(String field, String value) {
+
+        RealmResults<Item> results = realm.where(Item.class).equalTo(field, value).findAll();
+
+        realm.beginTransaction();
+        results.deleteAllFromRealm();
+        realm.commitTransaction();
+    }
+
+public void deleteHabits(){
         RealmResults<Habit> habits = realm.where(Habit.class).findAll();
         realm.beginTransaction();
         habits.deleteAllFromRealm();
