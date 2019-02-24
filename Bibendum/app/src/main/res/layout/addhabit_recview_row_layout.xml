@@ -10,7 +10,6 @@
         android:id="@+id/button"
         android:layout_width="387dp"
         android:layout_height="56dp"
-        android:layout_marginTop="2dp"
         android:fontFamily="@font/nova_flat"
         android:text="ADD A HABIT"
         app:layout_constraintEnd_toEndOf="parent"
