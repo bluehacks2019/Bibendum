@@ -27,7 +27,7 @@ public class RealmHelper {
         RealmResults<Habit> habits = realm.where(Habit.class).findAll();
 
         for (Habit h : habits) {
-            Habit toAdd = new Habit(h.getName(),h.getDuration(),h.getFrequency(),h.getStartDate());
+            Habit toAdd = new Habit(h.getName(),h.getDuration(),h.getFrequency(),h.getStartDate(),h.getTag());
             habitsInfos.add(h);
         }
 
@@ -65,4 +65,10 @@ public class RealmHelper {
         realm.commitTransaction();
     }
 
+public void deleteHabits(){
+        RealmResults<Habit> habits = realm.where(Habit.class).findAll();
+        realm.beginTransaction();
+        habits.deleteAllFromRealm();
+        realm.commitTransaction();
+    }
 }
