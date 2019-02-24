@@ -3,6 +3,9 @@ package com.bibendum.bluehacks.bibendum;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,17 +14,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<String> habitDetail;
-    private ArrayList<Integer> durationList;
-    private ArrayList<Integer> frequencyList;
     private Realm realm;
+    private RecyclerView feedRView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         RealmConfiguration realmConfig = new RealmConfiguration.Builder()
                 .name("habits.realm")
                 .schemaVersion(0)
+                .deleteRealmIfMigrationNeeded()
                 .build();
         Realm.setDefaultConfiguration(realmConfig);
 
@@ -40,18 +44,26 @@ public class MainActivity extends AppCompatActivity {
         RealmHelper helper = new RealmHelper(realm);
 
 
-//        //To make the back button at the tab
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         Date date = new Date();
-        TextView tv = (TextView) findViewById(R.id.textView3);
-        ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar);
-        Habit newHabit = new Habit("COOKING",2,3,new Date());
-        helper.saveHabits(newHabit);
+        //TextView tv = (TextView) findViewById(R.id.textView3);
+
         ArrayList<Habit> habits = helper.retrieveHabits();
-        for(Habit h: habits){
-            tv.setText(h.getName());
-        }
+
+        feedRView = (RecyclerView) findViewById(R.id.feedRView);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        feedRView.setLayoutManager(mLayoutManager);
+        feedRView.setItemAnimator(new DefaultItemAnimator());
+        MainActivityAdapter mAdepter = new MainActivityAdapter(habits,MainActivity.this);
+        feedRView.setAdapter(mAdepter);
+
+//        Habit newHabit = new Habit("COOKING",2,3,date,"Physical");
+//        helper.saveHabits(newHabit);
+//        //helper.deleteHabits();
+
+//        System.out.println("number of habits: " + habits.size());
+//        for(Habit h: habits){
+//            System.out.println(h.getDaysPassed(date));
+//        }
     }
 
     @Override
