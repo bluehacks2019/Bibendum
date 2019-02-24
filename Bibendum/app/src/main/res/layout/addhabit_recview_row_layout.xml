@@ -9,6 +9,7 @@
         android:id="@+id/button"
         android:layout_width="387dp"
         android:layout_height="56dp"
+        android:fontFamily="@font/nova_flat"
         android:text="ADD A HABIT"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
