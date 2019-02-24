@@ -9,7 +9,6 @@
         android:fontFamily="@font/nova_flat"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:fontFamily="@font/nova_flat"
         android:theme="@style/AppTheme">
         <activity android:name=".StrongholdActivity"
             android:label="Your Stronghold" />
@@ -21,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".HabitActivity"></activity>
+        <activity android:name=".AdventureSummaryActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

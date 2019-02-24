@@ -65,10 +65,19 @@ public class RealmHelper {
         realm.commitTransaction();
     }
 
-public void deleteHabits(){
+    public void deleteHabits(){
         RealmResults<Habit> habits = realm.where(Habit.class).findAll();
         realm.beginTransaction();
         habits.deleteAllFromRealm();
         realm.commitTransaction();
+    }
+
+    public int retrieveRescPts() {
+        int pts;
+        Stronghold stronghold = realm.where(Stronghold.class).findFirst();
+
+        pts = stronghold.getPtsForResc();
+
+        return pts;
     }
 }
